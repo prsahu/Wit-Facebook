@@ -6,15 +6,15 @@
   "keywords": ["node", "express", "github", "wit", "bot", "fcaebook"],
   "env": {
     "WIT_TOKEN": {
-      "description": "Server Access Token from wit.ai (see your wit app settings).",
+      "description": "Q3FHWAGJSDM5WQQBTWWRIRKCDIXLO6PZ",
       "required": true
     },
     "FB_PAGE_TOKEN": {
-      "description": "Facebook Page Token from https://developers.facebook.com/apps/",
+      "description": "EAACYbNrvC90BACrqKJgbTv7Vg12U4ZBAvUo9kCD6WlnXgCuE5vLGYWpMswYcJ1WSb5fDZA6pDmkIahBVFACMlUsz517ZC1PZA0hQnUwbJXIJ8762SV2kFL0E0lQ9D1ZAUNMVDyACvL5VGAfirTx9H0ZBZCZBVZCQvw53x7TXA5L5XfgZDZD",
       "required": true
     },
     "FB_VERIFY_TOKEN": {
-      "description": "Facebook verification Token. You can make it up.",
+      "description": "just_do_it",
       "required": false
     }
   }
