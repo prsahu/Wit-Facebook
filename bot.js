@@ -79,7 +79,7 @@ const actions = {
 
 
 const getWit = () => {
-  return new Wit(Config.WIT_TOKEN, actions);
+  return new Wit("Q3FHWAGJSDM5WQQBTWWRIRKCDIXLO6PZ", actions);
 };
 
 exports.getWit = getWit;
