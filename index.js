@@ -63,7 +63,7 @@ app.get('/', function(req, res) {
 
 // Webhook verify setup using FB_VERIFY_TOKEN
 app.get('/webhook', (req, res) => {
- 
+
   if (req.query['hub.mode'] === 'subscribe' &&
     req.query['hub.verify_token'] === 'just_do_it') {
     res.send(req.query['hub.challenge']);
@@ -106,7 +106,7 @@ app.post('/webhook', (req, res) => {
       // This will run all actions until our bot has nothing left to do
       wit.runActions(
         sessionId, // the user's current session
-        msg, // the user's message 
+        msg, // the user's message
         sessions[sessionId].context, // the user's current session state
         (error, context) => {
           if (error) {
@@ -129,6 +129,47 @@ app.post('/webhook', (req, res) => {
         }
       );
     }
+  }
+  res.sendStatus(200);
+});
+
+app.get('/webhook2', (req, res) => {
+
+  if (req.query['hub.mode'] === 'subscribe' &&
+    req.query['hub.verify_token'] === 'just_do_it') {
+    res.send(req.query['hub.challenge']);
+  } else {
+    res.sendStatus(400);
+  }
+});
+
+app.post('/webhook2', (req, res) => {
+  // Parsing the Messenger API response
+  const messaging = FB.getFirstMessagingEntry(req.body);
+  if (messaging && messaging.message) {
+
+    // Yay! We got a new message!
+
+    // We retrieve the Facebook user ID of the sender
+    const sender = messaging.sender.id;
+
+    // We retrieve the user's current session, or create one if it doesn't exist
+    // This is needed for our bot to figure out the conversation history
+    const sessionId = findOrCreateSession(sender);
+
+    // We retrieve the message content
+    const msg = messaging.message.text;
+    const atts = messaging.message.attachments;
+
+
+      // We received an attachment
+
+      // Let's reply with an automatic message
+      FB.fbMessage(
+        sender,
+        'Received some realtime update'
+      );
+
   }
   res.sendStatus(200);
 });
